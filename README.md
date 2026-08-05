@@ -35,6 +35,18 @@ Problem: Beim Einbau des Serverstatus-Moduls fiel mir auf, dass es zwei verschie
 Analysieren: Beim Vergleich wurde klar, dass es zwei getrennte Ordner auf dem Server gab – einen aktiven und einen alten Test-Ordner.
 Lösung: /var/www/meine-seite/ wurde als die echte, aktuelle Website bestätigt. Alte Kopien wurden gelöscht, und das Skript schreibt jetzt korrekt in den richtigen Ordner.
 
+### Monitoring-System eingerichtet (Uptime Kuma)
+*Ziel:* Serverdienste automatisch überwachen, um Ausfälle frühzeitig zu erkennen.
+*Umsetzung:* Uptime Kuma per Docker installiert und drei Monitore eingerichtet – für die eigene Website, Nextcloud und den Minecraft-Server. Zusätzlich eine Windows-Verknüpfung erstellt, um den Minecraft-Server künftig per Doppelklick starten zu können.
+
+*Problem 1:* Der Nextcloud-Monitor zeigte "Inaktiv" an.
+*Analyse:* Die URL enthielt automatisch "https" statt "http", weil das Feld das Präfix schon vorausgefüllt hatte.
+*Lösung:* URL korrigiert – danach lief der Monitor fehlerfrei.
+
+*Problem 2:* Die Windows-Verknüpfung öffnete beim Doppelklick nur eine Textdatei statt den Server zu starten.
+*Analyse:* Windows blendet Dateiendungen standardmäßig aus – die Datei hieß in Wirklichkeit minecraft_starten.bat.txt, nicht minecraft_starten.bat.
+*Lösung:* Im Explorer unter "Ansicht" die Dateinamenerweiterungen sichtbar gemacht und die Datei korrekt umbenannt. Danach funktionierte die Verknüpfung wie gewünscht.
+
 ### Serverstatus-Modul
 Ziel: CPU-, RAM- und Speicherauslastung des Servers live auf der Website anzeigen.
 Problem: Beim Installieren der Python-Bibliothek psutil (liest Systemwerte wie CPU/RAM aus) funktionierte die Installation über sudo nicht, da mir dafür die Admin-Rechte fehlten.
