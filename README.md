@@ -53,6 +53,25 @@ Problem: Beim Installieren der Python-Bibliothek psutil (liest Systemwerte wie C
 Lösung: Installation nur für den eigenen Benutzer durchgeführt (landet in ~/.local), ohne Eingriff ins Gesamtsystem. Damit hat die Installation von psutil funktioniert.
 Das eigene Skript serverstatus.py liest CPU, RAM und Speicherplatz aus und schreibt die Werte in eine status.html, die per JavaScript in die Hauptseite eingebunden wird.
 
+### Uptime-Kuma-Ausbau: Desktop-Verknüpfung, Discord-Benachrichtigungen, kurze Servernamen
+*Ziel:* Das Monitoring-System bequemer nutzbar machen und bei Ausfällen automatisch benachrichtigt werden.
+*Umsetzung:*
+- Desktop-Verknüpfung erstellt, die das Uptime-Kuma-Dashboard per Doppelklick im Browser öffnet
+- Eigenen Discord-Server erstellt und über einen Webhook mit Uptime Kuma verbunden, sodass bei Statusänderungen automatisch eine Nachricht in Discord ankommt
+- Windows-hosts-Datei bearbeitet, damit kurze Namen (z. B. "monitoring") statt der vollen IP-Adresse im Browser genutzt werden können
+
+*Problem:* Die hosts-Datei ließ sich zwar öffnen und bearbeiten, aber nicht speichern.
+*Analyse:* Notepad lief trotz "Als Administrator ausführen" nicht wirklich mit Admin-Rechten.
+*Lösung:* Notepad direkt aus einer bereits als Administrator laufenden PowerShell heraus gestartet – dadurch übernimmt es automatisch die nötigen Rechte. Danach ließ sich die Datei speichern, und die kurzen Namen funktionieren seitdem einwandfrei.
+
+### Monitoring-Status auf der eigenen Website einbinden
+*Ziel:* Den Live-Status des Servers direkt auf der eigenen Website sichtbar machen.
+*Umsetzung:* Eine öffentliche Status-Seite in Uptime Kuma erstellt und eine neue Unterseite (uptime.html) auf der Website angelegt.
+
+*Problem:* Die Status-Seite ließ sich nicht per iframe in die eigene Website einbetten.
+*Analyse:* Uptime Kuma blockiert das Einbetten aus Sicherheitsgründen bewusst (X-Frame-Options-Header).
+*Lösung:* Statt eines iframes einen direkten Button eingebaut, der die Status-Seite in einem neuen Tab öffnet. Funktioniert seitdem einwandfrei und ist über die Startseite verlinkt.
+
 ## Nächste Schritte
 - z. B. Reverse Proxy einrichten
 - z. B. Monitoring (Uptime Kuma) ergänzen
