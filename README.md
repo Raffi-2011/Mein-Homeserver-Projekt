@@ -72,14 +72,12 @@ Das eigene Skript serverstatus.py liest CPU, RAM und Speicherplatz aus und schre
 *Analyse:* Uptime Kuma blockiert das Einbetten aus Sicherheitsgründen bewusst (X-Frame-Options-Header).
 *Lösung:* Statt eines iframes einen direkten Button eingebaut, der die Status-Seite in einem neuen Tab öffnet. Funktioniert seitdem einwandfrei und ist über die Startseite verlinkt.
 
-Besucherzähler: Position & Zähl-Bug
-
+### Besucherzähler: Position & Zähl-Bug
 Problem: Der Besucherzähler stand zunächst oben rechts in der Ecke, sollte aber unter meine drei Buttons (Meine Projekte, Mein Fuhrpark, Server-Status). Außerdem ist mir aufgefallen, dass der Zähler an einem Tag von 2400 auf 3800 gesprungen war, obwohl ich die Website an dem Tag maximal 3-mal besucht hatte.
 Analysieren: Mit Claude Code habe ich den HTML-Code der Seite durchgesehen, um erst das bestehende Konzept zu verstehen, und den Zähler dann an die gewünschte Stelle verschoben. Für den Zähl-Sprung haben wir den Code der Flask-App untersucht: Bei jedem automatisierten Scan durch Uptime Kuma (mein Monitoring-Tool) wurde die Seite fälschlich als echter Besuch mitgezählt.
 Lösung: Ich habe einen separaten /health-Endpunkt in der Flask-App erstellt, der nur den Serverstatus prüft, ohne den Zähler zu erhöhen. Uptime Kuma fragt jetzt diesen Endpunkt ab statt der eigentlichen Seite – der Zähler zeigt seitdem nur noch echte Besuche.
 
-Chrome-Erweiterung für Claude Code einrichten
-
+### Chrome-Erweiterung für Claude Code einrichten
 Problem: Ich wollte die Chrome-Erweiterung "Claude in Chrome" verbinden, damit Claude Code direkt im Browser navigieren kann. Im Menü sprang die Auswahl aber immer wieder zurück auf "Install Chrome extension", statt "Reconnect extension" auszuführen – das Problem hatte ich schon einmal vorher, ohne es zu lösen.
 Analysieren: Diesmal habe ich es nicht über die Menü-Navigation, sondern direkt über einen anderen Befehl versucht.
 Lösung: Mit dem passenden Befehl hat die Verbindung dann funktioniert – Claude Code zeigt jetzt "Chrome Browser Automatisierung ist bereit" an.
