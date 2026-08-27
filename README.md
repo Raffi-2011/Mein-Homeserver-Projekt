@@ -87,6 +87,13 @@ Ich habe die Datei durchsucht und festgestellt, dass das Passwort an mehreren St
 Lösung:
 Ich habe eine neue .env-Datei angelegt und das Passwort dort als Variable gespeichert. In der docker-compose.yml wird das Passwort jetzt nur noch über diese Variable eingebunden, steht also nicht mehr direkt im Code. Zusätzlich habe ich die .env-Datei in die .gitignore eingetragen, damit sie niemals versehentlich auf GitHub hochgeladen wird. Zur Sicherheit habe ich außerdem ein neues Passwort vergeben. Nach einem Neustart habe ich geprüft, dass Nextcloud weiterhin fehlerfrei funktioniert.
 
+### Serverstatus-Verlauf als Diagramm Problem:
+Bisher konnte ich den Serverstatus (CPU, RAM, Speicherplatz) nur als aktuellen Momentwert sehen. Ein Verlauf über die Zeit war nicht sichtbar, obwohl die Werte längst in der Datenbank gespeichert wurden.
+Analysieren:
+Ich habe überlegt, wie ich die gespeicherten Messwerte sichtbar machen kann. Die Lösung war, die Daten über einen eigenen API-Endpunkt als JSON bereitzustellen und daraus mit der JavaScript-Bibliothek Chart.js ein Liniendiagramm zu zeichnen.
+Lösung:
+Ich habe eine neue Seite erstellt, auf der die Werte für CPU, RAM und Speicherplatz als farbige Linien im Diagramm dargestellt werden, mit einer Legende, die zeigt, welche Farbe zu welchem Wert gehört. Auf der unteren Achse steht die Uhrzeit, auf der seitlichen Achse der Prozentwert. Zusätzlich habe ich drei Buttons eingebaut ("Letzte Stunde", "Letzter Tag", "Alle Daten"), mit denen man den angezeigten Zeitraum auswählen kann.
+
 ## Nächste Schritte
 - z. B. Reverse Proxy einrichten
 - z. B. Monitoring (Uptime Kuma) ergänzen
