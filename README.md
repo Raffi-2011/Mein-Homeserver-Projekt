@@ -80,6 +80,13 @@ Problem: Der Besucherzähler steht zunächst oben rechts in der Ecke, sollte abe
 
 Problem: Ich wollte die Chrome-Erweiterung "Claude in Chrome" verbinden, damit Claude Code direkt im Browser navigieren kann. Im Menü sprang die Auswahl aber immer wieder zurück auf "Install Chrome extension", statt "Reconnect extension" auszuführen – das Problem hatte ich schon einmal vorher, ohne es zu lösen. Analysieren: Diesmal habe ich es nicht über die Menü-Navigation, sondern direkt über einen anderen Befehl versucht. Lösung: Mit dem passenden Befehl hat die Verbindung dann funktioniert – Claude Code zeigt jetzt "Chrome Browser Automatisierung ist bereit" an.
 
+### Nextcloud-Passwort aus dem Code entfernt Problem:
+In der docker-compose.yml-Datei für Nextcloud stand das Passwort für die Datenbank im Klartext direkt im Code. Das ist unsicher, weil jeder, der Zugriff auf die Datei hat, das Passwort einfach lesen könnte – zum Beispiel auch, wenn die Datei versehentlich auf GitHub landet.
+Analysieren:
+Ich habe die Datei durchsucht und festgestellt, dass das Passwort an mehreren Stellen im Klartext stand. Die Lösung dafür ist, Passwörter grundsätzlich nicht direkt im Code zu speichern, sondern in einer separaten Datei, die nicht mit hochgeladen wird.
+Lösung:
+Ich habe eine neue .env-Datei angelegt und das Passwort dort als Variable gespeichert. In der docker-compose.yml wird das Passwort jetzt nur noch über diese Variable eingebunden, steht also nicht mehr direkt im Code. Zusätzlich habe ich die .env-Datei in die .gitignore eingetragen, damit sie niemals versehentlich auf GitHub hochgeladen wird. Zur Sicherheit habe ich außerdem ein neues Passwort vergeben. Nach einem Neustart habe ich geprüft, dass Nextcloud weiterhin fehlerfrei funktioniert.
+
 ## Nächste Schritte
 - z. B. Reverse Proxy einrichten
 - z. B. Monitoring (Uptime Kuma) ergänzen
