@@ -94,6 +94,28 @@ Ich habe überlegt, wie ich die gespeicherten Messwerte sichtbar machen kann. Di
 Lösung:
 Ich habe eine neue Seite erstellt, auf der die Werte für CPU, RAM und Speicherplatz als farbige Linien im Diagramm dargestellt werden, mit einer Legende, die zeigt, welche Farbe zu welchem Wert gehört. Auf der unteren Achse steht die Uhrzeit, auf der seitlichen Achse der Prozentwert. Zusätzlich habe ich drei Buttons eingebaut ("Letzte Stunde", "Letzter Tag", "Alle Daten"), mit denen man den angezeigten Zeitraum auswählen kann.
 
+### Glossar für Fachbegriffe
+
+*Problem:*
+Im Projekt tauchen immer mehr Fachbegriffe auf (z.B. API, Docker, Cronjob), die ich mir nicht alle merken kann. Bisher musste ich bei jedem unbekannten Begriff neu nachfragen.
+
+*Analysieren:*
+Ich habe überlegt, wie ich mir die wichtigsten Begriffe dauerhaft griffbereit machen kann, ohne sie jedes Mal neu nachzuschlagen. Die Lösung war eine eigene Seite mit Begriff und Erklärung, ähnlich wie ein Wörterbuch.
+
+*Lösung:*
+Ich habe eine neue Seite glossar.html erstellt, die die wichtigsten Fachbegriffe aus dem Projekt (API, JSON, Endpunkt, Cronjob, Docker, .env-Datei, SQLite, Flask, Query-Parameter) mit kurzen, einfachen Erklärungen zeigt. Die Seite ist im gleichen Design wie der Rest der Website und über einen neuen Button von der Startseite aus erreichbar.
+
+### Login-Seite als Grundgerüst
+
+*Problem:*
+Für das Kontrollzentrum soll es später einen geschützten Bereich geben, der nur nach Anmeldung zugänglich ist. Bisher gab es dafür noch keine Login-Seite.
+
+*Analysieren:*
+Ich habe mich zunächst mit den Grundlagen eines Logins beschäftigt: Benutzername und Passwort werden eingegeben, der Server prüft sie gegen die Datenbank, wobei Passwörter niemals im Klartext, sondern nur verschlüsselt (gehasht) gespeichert werden dürfen. Als ersten Schritt wollte ich erstmal die sichtbare Oberfläche bauen, bevor die eigentliche Prüf-Logik folgt.
+
+*Lösung:*
+Ich habe eine neue Seite login.html erstellt mit einem Formular für Benutzername und Passwort (Passwort wird beim Tippen verdeckt dargestellt) sowie einem Anmelden-Button. Die eigentliche Prüfung gegen eine Datenbank ist noch nicht eingebaut - das folgt in einer der nächsten Sitzungen. Die Seite ist deshalb aktuell noch nicht von der Startseite aus verlinkt.
+
 ## Nächste Schritte
 - z. B. Reverse Proxy einrichten
 - z. B. Monitoring (Uptime Kuma) ergänzen
