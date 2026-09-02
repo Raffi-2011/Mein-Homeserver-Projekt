@@ -116,6 +116,25 @@ Ich habe mich zunächst mit den Grundlagen eines Logins beschäftigt: Benutzerna
 *Lösung:*
 Ich habe eine neue Seite login.html erstellt mit einem Formular für Benutzername und Passwort (Passwort wird beim Tippen verdeckt dargestellt) sowie einem Anmelden-Button. Die eigentliche Prüfung gegen eine Datenbank ist noch nicht eingebaut - das folgt in einer der nächsten Sitzungen. Die Seite ist deshalb aktuell noch nicht von der Startseite aus verlinkt.
 
+### Dark/Light-Mode-Umschalter
+
+*Problem:*
+Meine Website hatte bisher nur ein festes dunkles Design. Manche Besucher bevorzugen aber ein helles Design, zum Beispiel bei Tageslicht.
+
+*Analysieren:*
+Ich habe überlegt, wie man zwischen zwei Designs wechseln kann, ohne den Code doppelt zu pflegen. Die Lösung war, alle Farben zentral als Variablen zu definieren, damit man mit einem Klick einen zweiten Variablensatz aktivieren kann.
+
+*Lösung:*
+Ich habe einen Schalter eingebaut, mit dem ich zwischen einem dunklen und einem hellen Design wechseln kann. Dafür wurden alle Farben (Hintergrund, Text, Boxen, Buttons) als Variablen angelegt - einmal für das dunkle und einmal für das helle Design. Der Schalter funktioniert auf der ganzen Website.
+
+### Hover- und Scroll-Animationen
+
+*Problem:*
+Die Website wirkte bisher recht statisch - Buttons reagierten nicht, wenn man mit der Maus darüberfuhr, und Inhalte erschienen beim Scrollen einfach abrupt.
+
+*Lösung:*
+Buttons heben sich jetzt leicht an und bekommen einen Schatten, wenn man mit der Maus darübergeht. Zusätzlich blenden Inhalte beim Herunterscrollen sanft ein, sobald sie sichtbar werden.
+
 ## Nächste Schritte
 - z. B. Reverse Proxy einrichten
 - z. B. Monitoring (Uptime Kuma) ergänzen
